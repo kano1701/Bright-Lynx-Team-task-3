@@ -1,37 +1,32 @@
-var counterMin = -1;
+var arr = [];
 
-function Min()
+function randomColor()
 {
-	counterMin++;
-	document.getElementById("min").innerHTML = counterMin;
-	setTimeout("Min()", 59000);
+	arr = [];
+	
+	for(var i=1; i<=16; i++)
+	{
+		generatorColor();
+	}
+	alert(arr);
 }
 
-var counterSec = 0;
-
-function Sec()
+function randomInteger(min, max) 
 {
-	counterSec++;
-	document.getElementById("sec").innerHTML = counterSec;
-	setTimeout("Sec()", 1000);
+    var rand = min - 0.5 + Math.random() * (max - min + 1)
+    rand = Math.round(rand);
+    return rand;
 }
 
-var counterMilliSec = 0;
-
-function milliSec()
+function generatorColor()
 {	
-	if(counterMilliSec > 999)
-		counterMilliSec = 20;
+	var color = randomInteger(1,8);
+	var count = 0;
+	for(var j=0; j<arr.length; j++)
+		if(arr[j]==color)
+			count++;
+	if(count==2)
+		generatorColor();
 	else
-		counterMilliSec+=10;
-
-	document.getElementById("millisec").innerHTML = counterMilliSec;
-	setTimeout("milliSec()", 7);
-}
-
-function timer()
-{
-	Min();
-	Sec();
-	milliSec();
+		arr.push(color);
 }

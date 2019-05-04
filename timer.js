@@ -4,14 +4,17 @@ function Min()
 {
 	counterMin++;
 	document.getElementById("min").innerHTML = counterMin;
-	setTimeout("Min()", 60000);
+	setTimeout("Min()", 59000);
 }
 
 var counterSec = 0;
 
 function Sec()
 {
-	counterSec++;
+	if(counterSec >= 59)
+		counterSec = 0;
+	else
+		counterSec++;
 	document.getElementById("sec").innerHTML = counterSec;
 	setTimeout("Sec()", 1000);
 }
@@ -23,7 +26,7 @@ function milliSec()
 	if(counterMilliSec > 999)
 		counterMilliSec = 20;
 	else
-		counterMilliSec+=10;
+		counterMilliSec+=9;
 
 	document.getElementById("millisec").innerHTML = counterMilliSec;
 	setTimeout("milliSec()", 7);
