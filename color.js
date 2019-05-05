@@ -8,7 +8,6 @@ function randomColor()
 	{
 		generatorColor();
 	}
-	alert(arr);
 }
 
 function randomInteger(min, max) 
