@@ -8,6 +8,13 @@ function randomColor()
 	{
 		generatorColor();
 	}
+	
+	for(var j=0; j<16; j++)
+	{
+		arr[j] = colorant(arr[j]);
+	}
+
+	return arr;
 }
 
 function randomInteger(min, max) 
@@ -27,5 +34,39 @@ function generatorColor()
 	if(count==2)
 		generatorColor();
 	else
+	{
 		arr.push(color);
+	}
+}
+
+function colorant(color)
+{
+	switch(color)
+	{
+		case 1:
+			color = 'Lime';
+			break;
+		case 2:
+			color =  'Cyan';
+			break;
+		case 3:
+			color =  'Red';
+			break;
+		case 4:
+			color =  'DeepPink';
+			break;
+		case 5:
+			color =  'OrangeRed';
+			break;
+		case 6:
+			color =  'Gold';
+			break;
+		case 7:
+			color =  'Chocolate';
+			break;
+		case 8:
+			color =  'MediumBlue';
+			break;
+	}
+	return color;
 }

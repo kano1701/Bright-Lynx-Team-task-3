@@ -4,40 +4,68 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="script.js"></script>
+	<script src="timer.js"></script>
+	<script src="color.js"></script>
+	<script src="searchTwoCells.js"></script>
 </head>
 <body>
 	<div id="container">
 		<table>
 			<tr>
+				<td id="0"></td>
+				<td id="1"></td>
+				<td id="2"></td>
+				<td id="3"></td>
+			</tr>
+			<tr>
+				<td id="4"></td>
+				<td id="5"></td>
+				<td id="6"></td>
+				<td id="7"></td>
+			</tr>
+			<tr>
+				<td id="8"></td>
+				<td id="9"></td>
+				<td id="10"></td>
 				<td id="11"></td>
+			</tr>
+			<tr>
 				<td id="12"></td>
 				<td id="13"></td>
 				<td id="14"></td>
-			</tr>
-			<tr>
-				<td id="21"></td>
-				<td id="22"></td>
-				<td id="23"></td>
-				<td id="24"></td>
-			</tr>
-			<tr>
-				<td id="31"></td>
-				<td id="32"></td>
-				<td id="33"></td>
-				<td id="34"></td>
-			</tr>
-			<tr>
-				<td id="41"></td>
-				<td id="42"></td>
-				<td id="43"></td>
-				<td id="44"></td>
+				<td id="15"></td>
 			</tr>
 		</table>
-		<button onclick="randomColor();">Старт</button>
+		<button id="start">Старт</button>
 		<span id="test"></span>
 		Прошло времени <span id="min">0</span>:<span id="sec">0</span>:<span id="millisec">000</span>
 	</div>
-	<script src="timer.js"></script>
+	<script>
+		var arrColor = [];
+
+		window.onclick = function(e){
+			console.log("window.onclick");
+			var elem = e ? e.target : window.event.srcElement;
+			console.log(elem.id);
+			if(elem.id == "start"){
+				for (var i=0; i<16; i++) {
+					point = document.getElementById(i);
+					point.style.background = "White";
+				}
+				startGame();
+			}
+			else if(elem.id >=0 || elem.id <= 15){
+					pairSearch(elem.id, arrColor);
+			}
+		}
+
+		function startGame(){
+			console.log("Программа начала работу");
+			timer();
+			arrColor = randomColor();
+			console.log("массив цветов для клеток ");
+			console.log(arrColor);
+		}
+	</script>
 </body>
 </html>
