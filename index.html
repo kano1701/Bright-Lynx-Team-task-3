@@ -55,8 +55,11 @@
 				Game("start");
 			}
 			else if(elem.id >=0 || elem.id <= 15){
+				var point = document.getElementById(elem.id);
+				point.style.background = arrColor[elem.id];
 				countPoint = pairSearch(elem.id, arrColor, countPoint);
-				if(countPoint == 15)
+				console.log("______________"+countPoint);
+				if(countPoint == 16)
 					Game("stop");
 			}
 		}

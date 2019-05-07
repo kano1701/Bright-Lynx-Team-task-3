@@ -4,10 +4,10 @@ function Min(status){
 	if(status == "start"){
 		counterMin++;
 		document.getElementById("min").innerHTML = counterMin;
-		setTimeout("Min()", 59000);
+		setTimeout("Min('start')", 59000);
 	}
 	else if(status == "stop")
-		return document.getElementById("min");
+		return counterMin;
 }
 
 var counterSec = 0;
@@ -19,10 +19,10 @@ function Sec(status){
 		else
 			counterSec++;
 		document.getElementById("sec").innerHTML = counterSec;
-		setTimeout("Sec()", 1000);
+		setTimeout("Sec('start')", 1000);
 	}
 	else if(status == "stop")
-		return document.getElementById("sec");
+		return counterSec;
 }
 
 var counterMilliSec = 0;
@@ -34,10 +34,10 @@ function MilliSec(status){
 		else
 			counterMilliSec+=9;
 		document.getElementById("millisec").innerHTML = counterMilliSec;
-		setTimeout("MilliSec()", 7);
+		setTimeout("MilliSec('start')", 7);
 	}
 	else if(status == "stop")
-		return document.getElementById("millisec");
+		return counterMilliSec;
 }
 
 function timer(status){	
