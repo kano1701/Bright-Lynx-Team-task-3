@@ -42,9 +42,9 @@
 	</div>
 	<script>
 		var arrColor = [];
+		var countPoint = 0;
 
 		window.onclick = function(e){
-			console.log("window.onclick");
 			var elem = e ? e.target : window.event.srcElement;
 			console.log(elem.id);
 			if(elem.id == "start"){
@@ -52,19 +52,24 @@
 					point = document.getElementById(i);
 					point.style.background = "White";
 				}
-				startGame();
+				Game("start");
 			}
 			else if(elem.id >=0 || elem.id <= 15){
-					pairSearch(elem.id, arrColor);
+				countPoint = pairSearch(elem.id, arrColor, countPoint);
+				if(countPoint == 15)
+					Game("stop");
 			}
 		}
 
-		function startGame(){
-			console.log("Программа начала работу");
-			timer();
-			arrColor = randomColor();
-			console.log("массив цветов для клеток ");
-			console.log(arrColor);
+		function Game(status){
+			if(status == "start"){
+				timer(status);
+				arrColor = randomColor();
+				console.log("массив цветов для клеток ");
+				console.log(arrColor);
+			}
+			else if(status == "stop")
+				alert("Вы затратили на игру - "+timer(status));
 		}
 	</script>
 </body>
