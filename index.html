@@ -44,17 +44,23 @@
 		var arrColor = [];
 		var countPoint = 0;
 
-		window.onclick = function(e){
+		// возвращает элеметы на который нажато левой кнопкой мыши
+		window.onclick = function(e) {
 			var elem = e ? e.target : window.event.srcElement;
 			console.log(elem.id);
-			if(elem.id == "start"){
+			if(elem.id == "start") {
+				// очищаем поле
 				for (var i=0; i<16; i++) {
 					point = document.getElementById(i);
 					point.style.background = "White";
 				}
+				// вызываем функции отвечающие за начало игры
 				Game("start");
 			}
-			else if(elem.id >=0 || elem.id <= 15){
+			else if(elem.id >=0 || elem.id <= 15) {
+				// если нажата одна из клеток поля то она окрашивается,
+				// если она первая в паре или закрыта предыдущая пара, или подходит
+				// по цвету предыдущей клетке то цвет остается, инче происходит сброс поля
 				var point = document.getElementById(elem.id);
 				point.style.background = arrColor[elem.id];
 				countPoint = pairSearch(elem.id, arrColor, countPoint);
@@ -64,8 +70,8 @@
 			}
 		}
 
-		function Game(status){
-			if(status == "start"){
+		function Game(status) {
+			if(status == "start") {
 				timer(status);
 				arrColor = randomColor();
 				console.log("массив цветов для клеток ");

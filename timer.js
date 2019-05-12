@@ -1,10 +1,11 @@
 var counterMin = -1;
 
-function Min(status){
-	if(status == "start"){
+function Min(status) {
+	// функция для генерации минут
+	if(status == "start") {
 		counterMin++;
 		document.getElementById("min").innerHTML = counterMin;
-		setTimeout("Min('start')", 59000);
+		m = setTimeout("Min('start')", 59000);
 	}
 	else if(status == "stop")
 		return counterMin;
@@ -12,14 +13,15 @@ function Min(status){
 
 var counterSec = 0;
 
-function Sec(status){
-	if(status == "start"){
+function Sec(status) {
+	// функция для генерации секунд
+	if(status == "start") {
 		if(counterSec >= 59)
 			counterSec = 0;
 		else
 			counterSec++;
 		document.getElementById("sec").innerHTML = counterSec;
-		setTimeout("Sec('start')", 1000);
+		s = setTimeout("Sec('start')", 1000);
 	}
 	else if(status == "stop")
 		return counterSec;
@@ -27,26 +29,31 @@ function Sec(status){
 
 var counterMilliSec = 0;
 
-function MilliSec(status){
-	if(status == "start"){
+function MilliSec(status) {
+	// функция для генерации миллисекунд
+	if(status == "start") {
 		if(counterMilliSec > 999)
 			counterMilliSec = 20;
 		else
 			counterMilliSec+=9;
 		document.getElementById("millisec").innerHTML = counterMilliSec;
-		setTimeout("MilliSec('start')", 7);
+		ms = setTimeout("MilliSec('start')", 7);
 	}
 	else if(status == "stop")
 		return counterMilliSec;
 }
 
-function timer(status){	
-	if(status == "start"){
+function timer(status) {
+	// общая функция вызывающая посчет времени
+	if(status == "start") {
 		Min(status);
 		Sec(status);
 		MilliSec(status);
 	}
-	else if(status == "stop"){
+	else if(status == "stop") {
+		clearTimeout(s);
+		clearTimeout(m);
+		clearTimeout(ms);
 		var min = Min(status);
 		var sec = Sec(status);
 		var msec = MilliSec(status);
