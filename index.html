@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="timer.js"></script>
-	<script src="color.js"></script>
-	<script src="searchTwoCells.js"></script>
+	<!--<script src="timer.js"></script>-->
+	<!--<script src="color.js"></script>-->
+	<!--<script src="searchTwoCells.js"></script>-->
 </head>
 <body>
 	<div id="container">
@@ -40,46 +40,6 @@
 		<span id="test"></span>
 		Прошло времени <span id="min">0</span>:<span id="sec">0</span>:<span id="millisec">000</span>
 	</div>
-	<script>
-		var arrColor = [];
-		var countPoint = 0;
-
-		// возвращает элеметы на который нажато левой кнопкой мыши
-		window.onclick = function(e) {
-			var elem = e ? e.target : window.event.srcElement;
-			console.log(elem.id);
-			if(elem.id == "start") {
-				// очищаем поле
-				for (var i=0; i<16; i++) {
-					point = document.getElementById(i);
-					point.style.background = "White";
-				}
-				// вызываем функции отвечающие за начало игры
-				Game("start");
-			}
-			else if(elem.id >=0 || elem.id <= 15) {
-				// если нажата одна из клеток поля то она окрашивается,
-				// если она первая в паре или закрыта предыдущая пара, или подходит
-				// по цвету предыдущей клетке то цвет остается, инче происходит сброс поля
-				var point = document.getElementById(elem.id);
-				point.style.background = arrColor[elem.id];
-				countPoint = pairSearch(elem.id, arrColor, countPoint);
-				console.log("______________"+countPoint);
-				if(countPoint == 16)
-					Game("stop");
-			}
-		}
-
-		function Game(status) {
-			if(status == "start") {
-				timer(status);
-				arrColor = randomColor();
-				console.log("массив цветов для клеток ");
-				console.log(arrColor);
-			}
-			else if(status == "stop")
-				alert("Вы затратили на игру - "+timer(status));
-		}
-	</script>
+	<script src="script.js"></script>
 </body>
 </html>
