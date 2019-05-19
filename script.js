@@ -1,9 +1,7 @@
 window.onclick = function(e) {
     var elem = e ? e.target : window.event.srcElement;
-    console.log("elem.ID =", elem.id);
 
     if (elem.id == "start") {
-        console.log("elem.id == start");
         arraySearch = [];
         msec = 33;
         sec = -1;
@@ -14,7 +12,6 @@ window.onclick = function(e) {
         }
         console.log(arraySearch);
     } else if (elem.id >= 0 || elem.id <= 15) {
-        console.log("Клик по клетке");
         var point = document.getElementById(elem.id);
         point.style.background = arraySearch[elem.id];
         var counter = 0;
@@ -63,7 +60,6 @@ function addSec() {
 }
 
 function timer() {
-    console.log("function Timer");
     addMsec();
     addSec();
 }
